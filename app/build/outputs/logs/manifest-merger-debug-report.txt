@@ -1,8 +1,6 @@
 -- Merging decision tree log ---
 manifest
 ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:2:1-36:12
-	xmlns:android
-		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:2:11-69
 	package
 		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:3:7-28
 		INJECTED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml
@@ -15,6 +13,8 @@ ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/sr
 		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:4:7-30
 		INJECTED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:2:11-69
 uses-sdk
 ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:6:5-43
 	android:targetSdkVersion
@@ -62,11 +62,11 @@ ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/sr
 		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:22:27-73
 service#ltm.service.ServiceLTM
 ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:26:9-31:19
+	android:enabled
+		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:26:18-40
 	android:label
 		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:28:11-37
 	android:exported
 		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:27:11-34
-	android:enabled
-		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:26:18-40
 	android:name
 		ADDED from /Users/bertrandleclercq/AndroidStudioProjects/ServiceTest1_ltm/app/src/main/AndroidManifest.xml:29:11-36
