@@ -84,17 +84,16 @@ public class ActivityLaunching extends Activity {
 			}
 		});
         
-        // Methode service
+        // Call Methode service
         b_method.setOnTouchListener( new OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				
 				if( _connection == null )
 					return false;
 				
 				if( _interfaceWithService != null && event.getAction() == MotionEvent.ACTION_UP ) {
-					Log.v( "ltm",_interfaceWithService.helloService() ); // call
+					Log.v( "ltm",_interfaceWithService.helloService() ); // CALL METHOD
 					Toast.makeText( ActivityLaunching.this, "method called", 
 							Toast.LENGTH_SHORT ).show();
 				}
