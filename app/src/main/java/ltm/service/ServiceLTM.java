@@ -10,11 +10,11 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-// classe d'implémentation dédiée au binding
+/** Overview : classe d'implémentation dédiée au binding
+ */
 class LocalBinder extends Binder {
 
 	String helloService() {
-
 		return "hello service";
 	}
 }
@@ -67,8 +67,8 @@ public class ServiceLTM extends Service {
 	    /*final Intent launchNotificationIntent = new Intent(this, ActivityLaunched.class);
 		
 	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, 
-	    		launchNotificationIntent, PendingIntent.FLAG_ONE_SHOT);
-	    */
+	    		launchNotificationIntent, PendingIntent.FLAG_ONE_SHOT);*/
+
 		Notification.Builder builder = new Notification.Builder(this)
 			.setWhen(System.currentTimeMillis())
 			.setTicker("title")

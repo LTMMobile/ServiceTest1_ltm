@@ -1,5 +1,6 @@
 package ltm.service;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -20,7 +21,8 @@ public class ActivityLaunching extends Activity {
 	private LocalBinder _interfaceWithService = null;
 	
     /** Called when the activity is first created. */
-    @Override
+    @SuppressLint("ClickableViewAccessibility")
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -61,30 +63,7 @@ public class ActivityLaunching extends Activity {
 				b_start.setEnabled(true);
 			}} );
         
-        // Bind to service
-        b_bind.setOnTouchListener( new OnTouchListener() {
-			@Override
-			public boolean onTouch( View v, MotionEvent event ) {
-				
-				if( event.getAction() == MotionEvent.ACTION_UP ) {
-					Intent intent = new Intent( ActivityLaunching.this, ServiceLTM.class);
-					
-					if( _connection != null )
-						return false;
-					
-					_connection = new MaConnection();
-					
-					ActivityLaunching.this.bindService( intent, _connection, 0 );
-					b_method.setEnabled(true);
-					b_bind.setEnabled(false);
-					return true;
-				}
-				
-				return false;
-			}
-		});
-        
-        // Call Methode service
+         // Call Methode service
         b_method.setOnTouchListener( new OnTouchListener() {
 			
 			@Override
@@ -101,10 +80,31 @@ public class ActivityLaunching extends Activity {
 				return true;
 			}
 		});
-    }
-    
-    class MaConnection implements ServiceConnection {
 
+		// Bind to service
+		b_bind.setOnTouchListener( new OnTouchListener() {
+			@Override
+			public boolean onTouch( View v, MotionEvent event ) {
+				if( event.getAction() == MotionEvent.ACTION_UP ) {
+					Intent intent = new Intent( ActivityLaunching.this, ServiceLTM.class);
+
+					if( _connection != null )
+						return false;
+
+					_connection = new MaConnection();
+
+					ActivityLaunching.this.bindService( intent, _connection, 0 );
+					b_method.setEnabled(true);
+					b_bind.setEnabled(false);
+					return true;
+				}
+				return false;
+			}
+		});
+	}
+
+    // private LocalBinder _interfaceWithService = null;
+    class MaConnection implements ServiceConnection {
 		@Override
 		public void onServiceConnected( ComponentName name, IBinder service ) {
 			_interfaceWithService = (LocalBinder)service;
@@ -116,6 +116,5 @@ public class ActivityLaunching extends Activity {
 			_interfaceWithService = null;
 			Log.v( "ltm", "onServiceDisconnected" );
 		}
-    	
     }
 }

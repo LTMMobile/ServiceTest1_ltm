@@ -35,6 +35,5 @@ public class ActivityLaunched extends Activity {
 			_handler.sendMessage( _handler.obtainMessage( 0, null ) );
 			super.run();
 		}
-		
 	}
 }
