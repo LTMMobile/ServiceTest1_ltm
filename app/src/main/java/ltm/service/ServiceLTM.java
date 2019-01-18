@@ -10,6 +10,8 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import static java.lang.System.currentTimeMillis;
+
 /** Overview : classe d'implémentation dédiée au binding
  */
 class LocalBinder extends Binder {
@@ -70,11 +72,10 @@ public class ServiceLTM extends Service {
 	    		launchNotificationIntent, PendingIntent.FLAG_ONE_SHOT);*/
 
 		Notification.Builder builder = new Notification.Builder(this)
-			.setWhen(System.currentTimeMillis())
-			.setTicker("title")
+			.setWhen(currentTimeMillis())
 			.setSmallIcon(R.drawable.icon)
-			.setContentTitle("titre")
-			.setContentText("desc")
+			.setContentTitle("Contenu")
+			.setContentText("Description")
 			.setContentIntent(null);
 		
 		builder.setAutoCancel(true);

@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-	
-	<Button android:text="Start Service" 
-			android:id="@+id/Button01" 
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content">
-	</Button>
-
-	<Button android:text="Stop Service" 
-			android:id="@+id/Button02" 
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content">
-	</Button>
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
 	<Button
-	    android:id="@+id/button_bind_service"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/bind_service" />
+		android:id="@+id/Button01"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Start Service"></Button>
 
 	<Button
-	    android:id="@+id/button_method_service"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/unbind_service" />
+		android:id="@+id/Button02"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Stop Service"></Button>
+
+	<Button
+		android:id="@+id/button_bind_service"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/bind_service" />
+
+	<Button
+		android:id="@+id/button_method_service"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/unbind_service" />
 
 </LinearLayout>
