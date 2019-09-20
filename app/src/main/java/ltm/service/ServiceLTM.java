@@ -7,13 +7,12 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
 import static java.lang.System.currentTimeMillis;
 
-/** Overview : classe d'implémentation dédiée au binding
- */
 class LocalBinder extends Binder {
 
 	String helloService() {
@@ -26,11 +25,20 @@ public class ServiceLTM extends Service {
     private final LocalBinder _mBinder = new LocalBinder();
 
 	@Override
+	public IBinder onBind(Intent arg0) {
+		Toast.makeText(this, "onBind", Toast.LENGTH_SHORT).show();
+		Log.v("ltm", "onBind" );
+
+		showNotification();
+
+		return _mBinder;
+	}
+
+	@Override
 	public int onStartCommand( Intent intent, int flags, int startId ) {
         Toast.makeText(this, "onStartCommand", Toast.LENGTH_SHORT).show();	
         
 		Log.v( "ltm", "onStartCommand" );
-		showNotification();
 		
 		return START_STICKY;	
 	}
@@ -42,45 +50,33 @@ public class ServiceLTM extends Service {
         mNM = (NotificationManager)getSystemService( NOTIFICATION_SERVICE );
 		
 		Log.v("ltm", "onCreate" );
+		Toast.makeText(this, "onCreate", Toast.LENGTH_LONG ).show();
 		
 		super.onCreate();
 	}
 
 	@Override
 	public void onDestroy() {
-        mNM.cancel( 10000 );
+        mNM.cancel( 1 );
         Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();	
         Log.v( "ltm", "onDestroy" );
     }
 
-	@Override
-	public IBinder onBind(Intent arg0) {
-		Toast.makeText(this, "onBind", Toast.LENGTH_SHORT).show();
-		Log.v("ltm", "onBind" );
-
-
-		return _mBinder;
-	}
-	
 	private void showNotification() {
-			
-		final NotificationManager mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-	
-	    /*final Intent launchNotificationIntent = new Intent(this, ActivityLaunched.class);
-		
-	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, 
-	    		launchNotificationIntent, PendingIntent.FLAG_ONE_SHOT);*/
 
-		Notification.Builder builder = new Notification.Builder(this)
-			.setWhen(currentTimeMillis())
-			.setSmallIcon(R.drawable.icon)
-			.setContentTitle("Contenu")
-			.setContentText("Description")
-			.setContentIntent(null);
-		
+		NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "id1")
+				.setSmallIcon(R.drawable.icon)
+				.setContentTitle("Titre notif")
+				.setContentText("binding .....")
+				.setStyle(new NotificationCompat.BigTextStyle()
+						.bigText("big text"))
+				.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
 		builder.setAutoCancel(true);
-	
-		mNotification.notify(10000, builder.build());
+
+		final NotificationManager mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+		mNotification.notify(1, builder.build());
     }
 
 }

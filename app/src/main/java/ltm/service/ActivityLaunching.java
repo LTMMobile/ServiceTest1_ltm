@@ -2,9 +2,12 @@ package ltm.service;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -26,6 +29,8 @@ public class ActivityLaunching extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+		createNotificationChannel();
         
         final Button b_start = (Button)findViewById( R.id.Button01 );
         final Button b_stop = (Button)findViewById( R.id.Button02 );
@@ -117,4 +122,16 @@ public class ActivityLaunching extends Activity {
 			Log.v( "ltm", "onServiceDisconnected" );
 		}
     }
+
+	public void createNotificationChannel() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			CharSequence name = "channel1";
+			String description = "description";
+			int importance = NotificationManager.IMPORTANCE_DEFAULT;
+			NotificationChannel channel = new NotificationChannel("id1", name, importance);
+			channel.setDescription(description);
+			NotificationManager notificationManager = getSystemService(NotificationManager.class);
+			notificationManager.createNotificationChannel(channel);
+		}
+	}
 }
