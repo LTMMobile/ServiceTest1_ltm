@@ -23,6 +23,7 @@ class LocalBinder extends Binder {
 public class ServiceLTM extends Service {
     
     private final LocalBinder _mBinder = new LocalBinder();
+	NotificationManager mNotification = null;
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -47,7 +48,7 @@ public class ServiceLTM extends Service {
 	
 	@Override
 	public void onCreate() {
-        mNM = (NotificationManager)getSystemService( NOTIFICATION_SERVICE );
+		mNotification = (NotificationManager)getSystemService( NOTIFICATION_SERVICE );
 		
 		Log.v("ltm", "onCreate" );
 		Toast.makeText(this, "onCreate", Toast.LENGTH_LONG ).show();
@@ -57,7 +58,7 @@ public class ServiceLTM extends Service {
 
 	@Override
 	public void onDestroy() {
-        mNM.cancel( 1 );
+        //mNM.cancel( 1 );
         Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();	
         Log.v( "ltm", "onDestroy" );
     }
@@ -73,8 +74,6 @@ public class ServiceLTM extends Service {
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
 		builder.setAutoCancel(true);
-
-		final NotificationManager mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
 		mNotification.notify(1, builder.build());
     }

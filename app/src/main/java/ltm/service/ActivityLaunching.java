@@ -58,6 +58,7 @@ public class ActivityLaunching extends Activity {
 			@Override
 			public void onClick( View arg0 ) {
 				Intent intent = new Intent( ActivityLaunching.this, ServiceLTM.class);
+				//ActivityLaunching.this.unbindService(_connection);
 				ActivityLaunching.this.stopService( intent );
 				_connection = null;
 				_interfaceWithService = null;
@@ -126,7 +127,7 @@ public class ActivityLaunching extends Activity {
 	public void createNotificationChannel() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 			CharSequence name = "channel1";
-			String description = "description";
+			String description = "description channel1";
 			int importance = NotificationManager.IMPORTANCE_DEFAULT;
 			NotificationChannel channel = new NotificationChannel("id1", name, importance);
 			channel.setDescription(description);
