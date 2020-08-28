@@ -1,17 +1,14 @@
 package ltm.service;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
-
-import static java.lang.System.currentTimeMillis;
 
 class LocalBinder extends Binder {
 
@@ -21,7 +18,6 @@ class LocalBinder extends Binder {
 }
 
 public class ServiceLTM extends Service {
-    
     private final LocalBinder _mBinder = new LocalBinder();
 	NotificationManager mNotification = null;
 
@@ -64,13 +60,15 @@ public class ServiceLTM extends Service {
     }
 
 	private void showNotification() {
+		Intent intent = new Intent(this, ActivityLaunched.class);
+		PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "id1")
 				.setSmallIcon(R.drawable.icon)
 				.setContentTitle("Titre notif")
 				.setContentText("binding .....")
-				.setStyle(new NotificationCompat.BigTextStyle()
-						.bigText("big text"))
+				.setContentIntent(pendingIntent)
+				.setStyle(new NotificationCompat.BigTextStyle().bigText("big text"))
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
 		builder.setAutoCancel(true);
@@ -79,37 +77,5 @@ public class ServiceLTM extends Service {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

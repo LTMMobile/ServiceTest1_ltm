@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -112,17 +113,17 @@ public class ActivityLaunching extends Activity {
     // private LocalBinder _interfaceWithService = null;
     class MaConnection implements ServiceConnection {
 		@Override
-		public void onServiceConnected( ComponentName name, IBinder service ) {
-			_interfaceWithService = (LocalBinder)service;
-			Log.v( "ltm", "onServiceConnected" );
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			_interfaceWithService = (LocalBinder) service;
+			Log.v("ltm", "onServiceConnected");
 		}
 
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			_interfaceWithService = null;
-			Log.v( "ltm", "onServiceDisconnected" );
+			Log.v("ltm", "onServiceDisconnected");
 		}
-    }
+	}
 
 	public void createNotificationChannel() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -131,6 +132,7 @@ public class ActivityLaunching extends Activity {
 			int importance = NotificationManager.IMPORTANCE_DEFAULT;
 			NotificationChannel channel = new NotificationChannel("id1", name, importance);
 			channel.setDescription(description);
+			channel.setLightColor(Color.CYAN);
 			NotificationManager notificationManager = getSystemService(NotificationManager.class);
 			notificationManager.createNotificationChannel(channel);
 		}

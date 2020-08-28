@@ -32,7 +32,7 @@ public class ActivityLaunched extends Activity {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			_handler.sendMessage( _handler.obtainMessage( 0, null ) );
+			_handler.sendEmptyMessage(0);
 			super.run();
 		}
 	}
