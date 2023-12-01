@@ -80,7 +80,7 @@ public class ActivityLaunching extends Activity {
 				
 				if( _interfaceWithService != null && event.getAction() == MotionEvent.ACTION_UP ) {
 					Log.v( "ltm",_interfaceWithService.helloService() ); // CALL METHOD
-					Toast.makeText( ActivityLaunching.this, "method called", 
+					Toast.makeText( ActivityLaunching.this, "Method Called",
 							Toast.LENGTH_SHORT ).show();
 				}
 				

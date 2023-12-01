@@ -11,9 +11,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 class LocalBinder extends Binder {
-
 	String helloService() {
-		return "hello service";
+		return "hello binding Service";
 	}
 }
 
@@ -69,13 +68,9 @@ public class ServiceLTM extends Service {
 				.setContentText("binding .....")
 				.setContentIntent(pendingIntent)
 				.setStyle(new NotificationCompat.BigTextStyle().bigText("big text"))
-				.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+				.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+				.setAutoCancel(true);
 
-		builder.setAutoCancel(true);
-
-		mNotification.notify(1, builder.build());
+		mNotification.notify(1000, builder.build());
     }
-
 }
-
-
