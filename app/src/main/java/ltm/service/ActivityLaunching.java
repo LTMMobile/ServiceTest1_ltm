@@ -110,7 +110,6 @@ public class ActivityLaunching extends Activity {
 		});
 	}
 
-    // private LocalBinder _interfaceWithService = null;
     class MaConnection implements ServiceConnection {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
