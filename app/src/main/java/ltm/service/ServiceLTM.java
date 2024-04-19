@@ -43,7 +43,7 @@ public class ServiceLTM extends Service {
 	
 	@Override
 	public void onCreate() {
-		mNotification = (NotificationManager)getSystemService( NOTIFICATION_SERVICE );
+		mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 		
 		Log.v("ltm", "onCreate" );
 		Toast.makeText(this, "onCreate", Toast.LENGTH_LONG ).show();
@@ -60,7 +60,7 @@ public class ServiceLTM extends Service {
 
 	private void showNotification() {
 		Intent intent = new Intent(this, ActivityLaunched.class);
-		PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_IMMUTABLE);
 
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "id1")
 				.setSmallIcon(R.drawable.icon)

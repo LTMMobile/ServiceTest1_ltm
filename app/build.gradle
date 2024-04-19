@@ -5,12 +5,16 @@ android {
 
     defaultConfig {
         applicationId "ltm.service"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 34
     }
 
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }

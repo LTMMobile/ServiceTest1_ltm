@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class ActivityLaunching extends Activity {
-	
 	private ServiceConnection _connection = null;
 	private LocalBinder _interfaceWithService = null;
 	
